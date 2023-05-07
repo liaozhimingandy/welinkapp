@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -24,7 +26,8 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      // home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const HomePage(),
     );
   }
 }
@@ -110,6 +113,68 @@ class _MyHomePageState extends State<MyHomePage> {
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
+    );
+  }
+}
+
+
+class HomePage extends StatefulWidget {
+  // 自定义首页
+   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+
+}
+
+class _HomePageState extends State<HomePage> {
+
+  int indexRouter = 0;
+
+  /// PageView 控制器 , 用于控制 PageView
+  final _pageController = PageController(
+    /// 初始索引值
+    initialPage: 0,
+  );
+
+   @override
+  void dispose() {
+    super.dispose();
+    /// 销毁 PageView 控制器
+    _pageController.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      // appBar: AppBar(title: const Text("hello", textAlign: TextAlign.center,)),
+      body: PageView(
+        /// 控制跳转翻页的控制器
+        controller: _pageController,
+        /// Widget 组件数组 , 设置多个 Widget 组件
+        children: const [
+            Center(child: Text("消息", textAlign: TextAlign.center,)), 
+            Center(child: Text("通讯录", textAlign: TextAlign.center,)),
+            Center(child: Text("发现", textAlign: TextAlign.center,)),
+            Center(child: Text("我", textAlign: TextAlign.center,)),
+            ],
+        
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: indexRouter,
+        /// 图标和文本位置不变
+        type: BottomNavigationBarType.fixed,
+        iconSize: 30,
+        items: const [BottomNavigationBarItem(icon: Icon(Icons.message), label: '消息'), 
+                      BottomNavigationBarItem(icon: Icon(Icons.contacts), label: '通讯录'),
+                      BottomNavigationBarItem(icon: Icon(Icons.apps), label: '发现'),
+                      BottomNavigationBarItem(icon: Icon(Icons.person), label: '我')],
+        onTap: (value) => {
+           /// 跳转到对应的导航页面
+          _pageController.jumpToPage(value),
+          setState((){indexRouter = value;})
+        },
+        ),
     );
   }
 }
