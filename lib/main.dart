@@ -128,50 +128,39 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
+  /// 当前导航索引
   int indexRouter = 0;
 
-  /// PageView 控制器 , 用于控制 PageView
-  final _pageController = PageController(
-    /// 初始索引值
-    initialPage: 0,
-  );
+  /// body内容
+  List<Widget> listBody = [
+      Scaffold(appBar: AppBar(title: const Text("信息"), centerTitle: true), body: const Text("信息")), 
+      Scaffold(appBar: AppBar(title: const Text("通讯录"), centerTitle: true), body: const Text("通讯录")), 
+      Scaffold(appBar: AppBar(title: const Text("发现"), centerTitle: true), body: const Text("发现")), 
+      const Scaffold(body: Text("我")), 
+  ];
+
 
    @override
   void dispose() {
     super.dispose();
-    /// 销毁 PageView 控制器
-    _pageController.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       // appBar: AppBar(title: const Text("hello", textAlign: TextAlign.center,)),
-      body: PageView(
-        /// 控制跳转翻页的控制器
-        controller: _pageController,
-        /// Widget 组件数组 , 设置多个 Widget 组件
-        children: const [
-            Center(child: Text("消息", textAlign: TextAlign.center,)), 
-            Center(child: Text("通讯录", textAlign: TextAlign.center,)),
-            Center(child: Text("发现", textAlign: TextAlign.center,)),
-            Center(child: Text("我", textAlign: TextAlign.center,)),
-            ],
-        
-      ),
+      body: listBody[indexRouter],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: indexRouter,
         /// 图标和文本位置不变
         type: BottomNavigationBarType.fixed,
         iconSize: 30,
-        items: const [BottomNavigationBarItem(icon: Icon(Icons.message), label: '消息'), 
+        items: const [BottomNavigationBarItem(icon: Icon(Icons.message), label: '信息'), 
                       BottomNavigationBarItem(icon: Icon(Icons.contacts), label: '通讯录'),
                       BottomNavigationBarItem(icon: Icon(Icons.apps), label: '发现'),
                       BottomNavigationBarItem(icon: Icon(Icons.person), label: '我')],
         onTap: (value) => {
            /// 跳转到对应的导航页面
-          _pageController.jumpToPage(value),
           setState((){indexRouter = value;})
         },
         ),
