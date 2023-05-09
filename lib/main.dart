@@ -134,7 +134,8 @@ class _HomePageState extends State<HomePage> {
   /// body内容
   List<Widget> listBody = [
       Scaffold(appBar: AppBar(title: const Text("信息"), centerTitle: true), body: const Text("信息")), 
-      Scaffold(appBar: AppBar(title: const Text("通讯录"), centerTitle: true), body: const Text("通讯录")), 
+      Scaffold(appBar: AppBar(title: const Text("通讯录"), centerTitle: true), 
+          body: Container(color: Colors.grey, child: ListView.builder(itemBuilder: _itemForRow, itemCount: 5),)), 
       Scaffold(appBar: AppBar(title: const Text("发现"), centerTitle: true), body: const Text("发现")), 
       const Scaffold(body: Text("我")), 
   ];
@@ -167,3 +168,79 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
+
+Widget _itemForRow(BuildContext context, int index){
+  /// 展示联系人:
+  /// docs: https://www.jianshu.com/p/7641f8fe5b52
+    return const _FriendCell(imageUrl: 'https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png', name: 'zhangsan', groupTitle: '', imageAssets: '',);
+}
+
+
+class _FriendCell extends StatelessWidget {
+  /// 联系人
+  const _FriendCell({this.imageUrl='', this.name = '', this.groupTitle = '', this.imageAssets=''});
+
+  final String imageUrl;
+  final String name;
+  final String groupTitle;
+  final String imageAssets;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        groupTitle.isNotEmpty ? Container(
+          height: 30,
+          color: Colors.greenAccent,
+          alignment: Alignment.centerLeft,
+          padding: const EdgeInsets.only(left: 15),
+          child: groupTitle.isNotEmpty ? Text(groupTitle, style: const TextStyle(color: Colors.grey),) : null,
+        ) : Container(), //组头
+        Container(
+        color: Colors.white,
+        child: Row(
+          children: [
+            Container(
+              margin: const EdgeInsets.all(10),
+              width: 50,
+              height: 50,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8.0),
+                  image: imageUrl.isNotEmpty
+                      ? DecorationImage(
+                      image: NetworkImage(imageUrl)
+                  )
+                      : DecorationImage(
+                    image: AssetImage(imageAssets),
+                  )
+              ),
+            ),//图片
+            Container(
+              // color: Colors.red,
+              // width: screenWidth(context) - 54,
+              child: Column(
+                children: [
+                  Container(
+                    alignment: Alignment.centerLeft,
+                    height: 50,
+                    child: Text(
+                      name,
+                      style:const TextStyle(fontSize: 18),
+                    ),
+                  ),
+                  Container(
+                    height: 5,
+                    color: Colors.red,
+                  ), //下划线
+                ],
+              ),
+            ),//昵称
+          ],
+        ),
+      ), //cell的内容
+      ]
+    );
+  }
+
+}
+
