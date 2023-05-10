@@ -3,7 +3,7 @@ import '../const.dart';
 
 class IndexBar extends StatefulWidget {
   final void Function(String str) indexBarCallBack;
-
+ 
   const IndexBar({Key? key, required this.indexBarCallBack}) : super(key: key);
 
   @override
@@ -72,7 +72,7 @@ class _IndexBarState extends State<IndexBar> {
                       alignment: Alignment(-0.3, 0),
                       children: [
                         Image(
-                          image: AssetImage('images/气泡.png'),
+                          image: AssetImage('assets/images/气泡.png'),
                           width: 60,
                         ),
                         Text(

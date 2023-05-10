@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:welinkapp/pages/friends/friends_page.dart';
+import 'package:welinkapp/pages/chat/chat_page.dart';
 
 class RootPage extends StatefulWidget {
   const RootPage({Key? key}) : super(key: key);
@@ -15,9 +16,7 @@ class RootPageState extends State<RootPage> {
 
   /// body内容
   List<Widget> listBody = [
-    Scaffold(
-        appBar: AppBar(title: const Text("信息"), centerTitle: true),
-        body: const Text("信息")),
+    const ChatPage(),
     const FriendsPage(),
     Scaffold(
         appBar: AppBar(title: const Text("发现"), centerTitle: true),

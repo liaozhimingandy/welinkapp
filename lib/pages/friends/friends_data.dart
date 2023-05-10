@@ -6,8 +6,8 @@ class AddressBook {
 }
 
 List<AddressBook> addressBooks = [
-  AddressBook('images/新的朋友.png', '新的朋友'),
-  AddressBook('images/标签.png', '标签'),
+  AddressBook('assets/images/新的朋友.png', '新的朋友'),
+  AddressBook('assets/images/标签.png', '标签'),
 ];
 
 class Friends {

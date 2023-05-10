@@ -47,7 +47,28 @@ class _FriendsPageState extends State<FriendsPage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: const Text("通讯录"), centerTitle: true),
+        appBar: AppBar(
+          centerTitle: true,
+          elevation: 0.0,
+          titleSpacing: 0.0,
+          actions: [
+            GestureDetector(
+              onTap: () {
+                print('添加好友');
+                // Navigator.of(context).push(MaterialPageRoute(
+                //     builder: (BuildContext context) =>
+                //         DiscoverChildPage(title: '添加好友')));
+              },
+              child: Container(
+                margin: const EdgeInsets.only(right: 10),
+                child: const Image(
+                  image: AssetImage('assets/images/icon_friends_add.png'),
+                  width: 30,
+                ),
+            ),
+          ),
+          ],
+          title: const Text("通讯录")),
         body: Container(
             color: themeColor,
             child: Stack(children: [
@@ -58,8 +79,8 @@ class _FriendsPageState extends State<FriendsPage>
               IndexBar(indexBarCallBack: (String str) {
                 // print(str);
                 if (_groupOffsetMap[str] != null) {
-                  final duration = Duration(milliseconds: 10);
-                  final curve = Curves.easeIn;
+                  const duration = Duration(milliseconds: 10);
+                  const curve = Curves.easeIn;
                   if (_groupOffsetMap[str] < _maxScrollExtent) {
                     _scrollController.animateTo(_groupOffsetMap[str],
                         duration: duration, curve: curve);
