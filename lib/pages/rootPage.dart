@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'package:welinkapp/pages/friends/friends_page.dart';
 import 'package:welinkapp/pages/chat/chat_page.dart';
+import 'package:welinkapp/pages/friends/friends_page.dart';
+import 'package:welinkapp/pages/discover/discover_page.dart';
+import 'package:welinkapp/pages/me/me_page.dart';
 
 class RootPage extends StatefulWidget {
   const RootPage({Key? key}) : super(key: key);
@@ -15,13 +17,11 @@ class RootPageState extends State<RootPage> {
   int indexRouter = 0;
 
   /// body内容
-  List<Widget> listBody = [
-    const ChatPage(),
-    const FriendsPage(),
-    Scaffold(
-        appBar: AppBar(title: const Text("发现"), centerTitle: true),
-        body: const Text("发现")),
-    const Scaffold(body: Text("我")),
+  List<Widget> listBody = const [
+    ChatPage(),
+    FriendsPage(),
+    DiscoverPage(),
+    MePage(),
   ];
 
   @override
