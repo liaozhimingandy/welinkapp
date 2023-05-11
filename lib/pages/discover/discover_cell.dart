@@ -17,10 +17,10 @@ class DiscoverCell extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _DiscoverCellState createState() => _DiscoverCellState();
+  DiscoverCellState createState() => DiscoverCellState();
 }
 
-class _DiscoverCellState extends State<DiscoverCell> {
+class DiscoverCellState extends State<DiscoverCell> {
   Color _backgroundColor = Colors.white;
 
   @override
@@ -48,7 +48,8 @@ class _DiscoverCellState extends State<DiscoverCell> {
         });
       },
       child: Container(
-        padding: EdgeInsets.all(10),
+        padding: const EdgeInsets.all(10),
+        margin: const EdgeInsets.all(8),
         color: _backgroundColor,
         height: 54,
         child: Row(
@@ -62,7 +63,7 @@ class _DiscoverCellState extends State<DiscoverCell> {
                     width: 20,
                   ),
                   SizedBox(
-                    width: 15,
+                    width: 5,
                   ),
                   Text(widget.title),
                 ],
@@ -73,7 +74,7 @@ class _DiscoverCellState extends State<DiscoverCell> {
                 children: [
                   Text(
                     widget.subTitle == null ? '' : '${widget.subTitle}',
-                    style: TextStyle(color: Colors.grey, fontSize: 13),
+                    style: const TextStyle(color: Colors.grey, fontSize: 13),
                   ),
                   widget.subImageName == null
                       ? Container()
@@ -81,7 +82,7 @@ class _DiscoverCellState extends State<DiscoverCell> {
                           image: AssetImage(widget.subImageName!),
                           width: 15,
                         ),
-                  Image(
+                 const Image(
                     image: AssetImage('images/icon_right.png'),
                     width: 15,
                   )

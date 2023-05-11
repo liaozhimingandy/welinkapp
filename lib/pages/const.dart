@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 // 主题色
-const Color themeColor = Color.fromRGBO(220, 220, 220, 1.0);
+const Color themeColor = Color.fromRGBO(233,235,238, 1.0);
 
 // 屏幕宽
 double screenWidth(BuildContext context) {

@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:welinkapp/pages/const.dart';
 import 'package:welinkapp/pages/discover/discover_cell.dart';
 
 class MePage extends StatefulWidget {
   const MePage({Key? key}) : super(key: key);
 
   @override
-  _MePageState createState() => _MePageState();
+  MePageState createState() => MePageState();
 }
 
-class _MePageState extends State<MePage>
+class MePageState extends State<MePage>
     with AutomaticKeepAliveClientMixin<MePage> {
+
+   // 头像组件
   Widget _headerCell() {
     /// 头部组件
     return Container(
@@ -54,7 +57,7 @@ class _MePageState extends State<MePage>
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: const [
                             Text(
-                              '微信号:123456',
+                              '昵称',
                               style:
                                   TextStyle(fontSize: 20, color: Colors.grey),
                             ),
@@ -82,12 +85,13 @@ class _MePageState extends State<MePage>
   @override
   Widget build(BuildContext context) {
     super.build(context);
+    
     return Scaffold(
-        body: Container(
-      child: Stack(
+      body: Container(
+        child: Stack(
         children: [
           Container(
-            color: const Color.fromRGBO(220, 220, 220, 1.0),
+            color: themeColor,
             child: MediaQuery.removePadding(
                 context: context,
                 removeTop: true,
@@ -95,49 +99,11 @@ class _MePageState extends State<MePage>
                   children: [
                     _headerCell(),
                     const SizedBox(
-                      height: 10,
-                    ),
-                    // const DiscoverCell(
-                    //     title: '支付', imageName: 'images/icon_right.png'),
-                    const SizedBox(
-                      height: 10,
+                      height: 5,
                     ),
                     const DiscoverCell(
                         title: '收藏', imageName: 'images/icon_right.png'),
-                    Row(
-                      children: [
-                        Container(
-                          color: Colors.white,
-                          width: 50,
-                          height: 0.5,
-                        )
-                      ],
-                    ),
-                    // DiscoverCell(title: '相册', imageName: 'assets/images/more.png'),
-                    Row(
-                      children: [
-                        Container(
-                          color: Colors.white,
-                          width: 50,
-                          height: 0.5,
-                        )
-                      ],
-                    ),
-                    // DiscoverCell(title: '卡包', imageName: 'images/微信卡包.png'),
-                    Row(
-                      children: [
-                        Container(
-                          color: Colors.white,
-                          width: 50,
-                          height: 0.5,
-                        )
-                      ],
-                    ),
-                    // DiscoverCell(title: '表情', imageName: 'images/微信表情.png'),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    // DiscoverCell(title: '设置', imageName: 'images/微信设置.png'),
+                    
                   ],
                 )),
           ),
