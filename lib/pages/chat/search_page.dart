@@ -9,15 +9,15 @@ class SearchPage extends StatefulWidget {
   const SearchPage({Key? key, required this.datas}) : super(key: key);
 
   @override
-  _SearchPageState createState() => _SearchPageState();
+  SearchPageState createState() => SearchPageState();
 }
 
-class _SearchPageState extends State<SearchPage> {
-  List<Chat> _models = [];
+class SearchPageState extends State<SearchPage> {
+  final List<Chat> _models = [];
   String _searchKey = '';
 
   _searchText(String text) {
-    if (text.length == 0) {
+    if (text.isEmpty) {
       _models.clear();
       setState(() {});
     } else {
@@ -32,14 +32,14 @@ class _SearchPageState extends State<SearchPage> {
   }
 
   Widget _title(String text) {
-    final normalStyle = TextStyle(color: Colors.black87);
-    final highlightedStyle = TextStyle(color: Colors.green);
+    const normalStyle = TextStyle(color: Colors.black87);
+    const highlightedStyle = TextStyle(color: Colors.green);
 
     List<TextSpan> list = [];
     List<String> strings = text.split(_searchKey);
     for (int i = 0; i < strings.length; i++) {
       final one = strings[i];
-      if (one.length > 0) {
+      if (one.isNotEmpty) {
         list.add(TextSpan(text: one, style: normalStyle));
       }
       if (i < strings.length - 1) {
@@ -106,17 +106,17 @@ class SearchBar extends StatefulWidget {
   const SearchBar({Key? key, required this.onChanged}) : super(key: key);
 
   @override
-  _SearchBarState createState() => _SearchBarState();
+  SearchBarState createState() => SearchBarState();
 }
 
-class _SearchBarState extends State<SearchBar> {
+class SearchBarState extends State<SearchBar> {
   final TextEditingController _controller = TextEditingController();
 
   bool _showClear = false;
 
   _onChanged(String text) {
     widget.onChanged(text);
-    if (text.length > 0) {
+    if (text.isNotEmpty) {
       _showClear = true;
       setState(() {});
     } else {
@@ -144,16 +144,16 @@ class _SearchBarState extends State<SearchBar> {
                   ),
                   width: screenWidth(context) - 50,
                   height: 44,
-                  margin: EdgeInsets.only(top: 5, left: 5, bottom: 5),
-                  padding: EdgeInsets.only(left: 5, right: 5),
+                  margin: const EdgeInsets.only(top: 5, left: 5, bottom: 5),
+                  padding: const EdgeInsets.only(left: 5, right: 5),
                   child: Row(
                     children: [
-                      Image(
+                      const Image(
                         image: AssetImage('images/放大镜b.png'),
                         width: 20,
                         color: Colors.grey,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 5,
                       ),
                       Expanded(
@@ -161,7 +161,7 @@ class _SearchBarState extends State<SearchBar> {
                           controller: _controller,
                           onChanged: _onChanged,
                           cursorColor: Colors.green,
-                          decoration: InputDecoration.collapsed(
+                          decoration: const InputDecoration.collapsed(
                             hintText: '搜索',
                           ),
                         ),
@@ -172,7 +172,7 @@ class _SearchBarState extends State<SearchBar> {
                                 _controller.clear();
                                 _onChanged('');
                               },
-                              child: Icon(
+                              child: const Icon(
                                 Icons.cancel,
                                 size: 20,
                                 color: Colors.grey,
@@ -187,7 +187,7 @@ class _SearchBarState extends State<SearchBar> {
                     onTap: () {
                       Navigator.pop(context);
                     },
-                    child: Center(
+                    child: const Center(
                       child: Text('取消',
                           style: TextStyle(fontWeight: FontWeight.bold)),
                     ),

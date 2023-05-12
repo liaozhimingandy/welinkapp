@@ -3,17 +3,17 @@ import '../const.dart';
 
 class IndexBar extends StatefulWidget {
   final void Function(String str) indexBarCallBack;
- 
+
   const IndexBar({Key? key, required this.indexBarCallBack}) : super(key: key);
 
   @override
-  _IndexBarState createState() => _IndexBarState();
+  IndexBarState createState() => IndexBarState();
 }
 
-class _IndexBarState extends State<IndexBar> {
+class IndexBarState extends State<IndexBar> {
   var _currentIndexLetter = '';
-  final _index_words = [];
-  Color _backgroundColor = Color.fromRGBO(1, 1, 1, 0.0);
+  final _indexWords = [];
+  Color _backgroundColor = const Color.fromRGBO(1, 1, 1, 0.0);
   Color _textColor = Colors.black;
 
   var _showIndicator = false;
@@ -23,9 +23,9 @@ class _IndexBarState extends State<IndexBar> {
     RenderBox? box = context.findRenderObject() as RenderBox?;
     if (box != null) {
       double y = box.globalToLocal(globalPosition).dy;
-      final itemHeight = screenHeight(context) / 2 / _index_words.length;
-      int index = (y ~/ itemHeight).clamp(0, _index_words.length - 1);
-      return _index_words[index];
+      final itemHeight = screenHeight(context) / 2 / _indexWords.length;
+      int index = (y ~/ itemHeight).clamp(0, _indexWords.length - 1);
+      return _indexWords[index];
     }
     return null;
   }
@@ -34,20 +34,20 @@ class _IndexBarState extends State<IndexBar> {
   void initState() {
     super.initState();
 
-    _index_words.add('🔍');
+    _indexWords.add('🔍');
     for (int i = 0; i < 26; i++) {
       var string = String.fromCharCode(i + 65);
-      _index_words.add(string);
+      _indexWords.add(string);
     }
   }
 
   @override
   Widget build(BuildContext context) {
     List<Widget> indexWidgets = [];
-    for (int i = 0; i < _index_words.length; i++) {
+    for (int i = 0; i < _indexWords.length; i++) {
       indexWidgets.add(Expanded(
         child: Container(
-          child: Text(_index_words[i],
+          child: Text(_indexWords[i],
               style: TextStyle(
                 fontSize: 10,
                 color: _textColor,
@@ -69,15 +69,16 @@ class _IndexBarState extends State<IndexBar> {
               child: !_showIndicator
                   ? null
                   : Stack(
-                      alignment: Alignment(-0.3, 0),
+                      alignment: const Alignment(-0.3, 0),
                       children: [
-                        Image(
+                        const Image(
                           image: AssetImage('assets/images/气泡.png'),
                           width: 60,
                         ),
                         Text(
                           _currentIndexLetter,
-                          style: TextStyle(color: Colors.white, fontSize: 35),
+                          style: const TextStyle(
+                              color: Colors.white, fontSize: 35),
                         )
                       ],
                     ),
@@ -97,7 +98,7 @@ class _IndexBarState extends State<IndexBar> {
                       getIndexLetter(context, details.globalPosition)!;
                   widget.indexBarCallBack(_currentIndexLetter);
                 }
-                _backgroundColor = Color.fromRGBO(1, 1, 1, 0.5);
+                _backgroundColor = const Color.fromRGBO(1, 1, 1, 0.5);
                 _textColor = Colors.white;
                 _showIndicator = true;
                 setState(() {});
@@ -109,14 +110,14 @@ class _IndexBarState extends State<IndexBar> {
                       getIndexLetter(context, details.globalPosition)!;
                   widget.indexBarCallBack(_currentIndexLetter);
                   _indicatorAlignmentY = (1.13 + 1.13) /
-                          (_index_words.length.toDouble() - 1) *
-                          _index_words.indexOf(_currentIndexLetter) -
+                          (_indexWords.length.toDouble() - 1) *
+                          _indexWords.indexOf(_currentIndexLetter) -
                       1.13;
                   setState(() {});
                 }
               },
               onVerticalDragEnd: (DragEndDetails details) {
-                _backgroundColor = Color.fromRGBO(1, 1, 1, 0.0);
+                _backgroundColor = const Color.fromRGBO(1, 1, 1, 0.0);
                 _textColor = Colors.black;
                 _showIndicator = false;
                 setState(() {});

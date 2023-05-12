@@ -6,10 +6,10 @@ class DiscoverPage extends StatefulWidget {
   const DiscoverPage({Key? key}) : super(key: key);
 
   @override
-  _DiscoverPageState createState() => _DiscoverPageState();
+  DiscoverPageState createState() => DiscoverPageState();
 }
 
-class _DiscoverPageState extends State<DiscoverPage>
+class DiscoverPageState extends State<DiscoverPage>
     with AutomaticKeepAliveClientMixin<DiscoverPage> {
   @override
   bool get wantKeepAlive => true;
@@ -20,7 +20,7 @@ class _DiscoverPageState extends State<DiscoverPage>
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text(
+        title: const Text(
           "发现",
           style: TextStyle(color: Colors.black87),
         ),

@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-import 'package:welinkapp/pages/const.dart';
 import 'search_cell.dart';
 import 'chat.dart';
 
@@ -10,10 +9,10 @@ class ChatPage extends StatefulWidget {
   const ChatPage({Key? key}) : super(key: key);
 
   @override
-  _ChatPageState createState() => _ChatPageState();
+  ChatPageState createState() => ChatPageState();
 }
 
-class _ChatPageState extends State<ChatPage>
+class ChatPageState extends State<ChatPage>
     with AutomaticKeepAliveClientMixin<ChatPage> {
   List<Chat> _chatList = [];
   bool _cancelConnect = false;
@@ -69,7 +68,7 @@ class _ChatPageState extends State<ChatPage>
         .timeout(const Duration(milliseconds: 5000))
         .catchError((timeoutError) {
           _cancelConnect = true;
-          print('timeoutError: ${timeoutError}');
+          print('timeoutError...');
         });
 
     // final chat = {

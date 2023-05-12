@@ -10,10 +10,10 @@ class DiscoverChildPage extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _DiscoverChildPageState createState() => _DiscoverChildPageState();
+  DiscoverChildPageState createState() => DiscoverChildPageState();
 }
 
-class _DiscoverChildPageState extends State<DiscoverChildPage> {
+class DiscoverChildPageState extends State<DiscoverChildPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

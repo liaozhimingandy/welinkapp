@@ -8,10 +8,10 @@ class FriendsPage extends StatefulWidget {
   const FriendsPage({Key? key}) : super(key: key);
 
   @override
-  _FriendsPageState createState() => _FriendsPageState();
+  FriendsPageState createState() => FriendsPageState();
 }
 
-class _FriendsPageState extends State<FriendsPage>
+class FriendsPageState extends State<FriendsPage>
     with AutomaticKeepAliveClientMixin<FriendsPage> {
   final ScrollController _scrollController = ScrollController();
   final Map _groupOffsetMap = {
@@ -48,27 +48,27 @@ class _FriendsPageState extends State<FriendsPage>
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          centerTitle: true,
-          elevation: 0.0,
-          titleSpacing: 0.0,
-          actions: [
-            GestureDetector(
-              onTap: () {
-                print('添加好友');
-                // Navigator.of(context).push(MaterialPageRoute(
-                //     builder: (BuildContext context) =>
-                //         DiscoverChildPage(title: '添加好友')));
-              },
-              child: Container(
-                margin: const EdgeInsets.only(right: 10),
-                child: const Image(
-                  image: AssetImage('assets/images/icon_friends_add.png'),
-                  width: 30,
+            centerTitle: true,
+            elevation: 0.0,
+            titleSpacing: 0.0,
+            actions: [
+              GestureDetector(
+                onTap: () {
+                  debugPrint('添加好友');
+                  // Navigator.of(context).push(MaterialPageRoute(
+                  //     builder: (BuildContext context) =>
+                  //         DiscoverChildPage(title: '添加好友')));
+                },
+                child: Container(
+                  margin: const EdgeInsets.only(right: 10),
+                  child: const Image(
+                    image: AssetImage('assets/images/icon_friends_add.png'),
+                    width: 30,
+                  ),
                 ),
-            ),
-          ),
-          ],
-          title: const Text("通讯录")),
+              ),
+            ],
+            title: const Text("通讯录")),
         body: Container(
             color: themeColor,
             child: Stack(children: [
@@ -158,17 +158,17 @@ class _FriendCell extends StatelessWidget {
                 ? null
                 : Text(
                     groupTitle!,
-                    style: TextStyle(fontSize: 20, color: Colors.grey),
+                    style: const TextStyle(fontSize: 20, color: Colors.grey),
                   ),
             alignment: Alignment.centerLeft,
             color: themeColor,
-            padding: EdgeInsets.only(left: 10),
+            padding: const EdgeInsets.only(left: 10),
           ),
           Container(
             child: Row(
               children: [
                 Container(
-                  margin: EdgeInsets.all(10),
+                  margin: const EdgeInsets.all(10),
                   width: 50,
                   height: 50,
                   decoration: BoxDecoration(
@@ -182,7 +182,7 @@ class _FriendCell extends StatelessWidget {
                     Container(
                       child: Text(
                         name,
-                        style: TextStyle(fontSize: 18),
+                        style: const TextStyle(fontSize: 18),
                       ),
                       height: 53.5,
                       width: screenWidth(context) - 100,

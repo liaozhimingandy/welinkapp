@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_import
+
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:welinkapp/pages/discover/discover_child_page.dart';
@@ -27,7 +29,7 @@ class DiscoverCellState extends State<DiscoverCell> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        print('onTap');
+        debugPrint('onTap');
         Navigator.of(context).push(MaterialPageRoute(
             builder: (BuildContext context) =>
                 DiscoverChildPage(title: widget.title)));
@@ -36,13 +38,13 @@ class DiscoverCellState extends State<DiscoverCell> {
         });
       },
       onTapDown: (TapDownDetails details) {
-        print('onTapDown');
+        debugPrint('onTapDown');
         setState(() {
           _backgroundColor = Colors.grey;
         });
       },
       onTapCancel: () {
-        print('onTapCancel');
+        debugPrint('onTapCancel');
         setState(() {
           _backgroundColor = Colors.white;
         });
@@ -62,7 +64,7 @@ class DiscoverCellState extends State<DiscoverCell> {
                     image: AssetImage(widget.imageName),
                     width: 20,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 5,
                   ),
                   Text(widget.title),
@@ -82,7 +84,7 @@ class DiscoverCellState extends State<DiscoverCell> {
                           image: AssetImage(widget.subImageName!),
                           width: 15,
                         ),
-                 const Image(
+                  const Image(
                     image: AssetImage('images/icon_right.png'),
                     width: 15,
                   )
