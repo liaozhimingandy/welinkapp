@@ -1,9 +1,4 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-
-import 'search_cell.dart';
-import 'chat.dart';
 
 class ChatPage extends StatefulWidget {
   const ChatPage({Key? key}) : super(key: key);
@@ -14,8 +9,6 @@ class ChatPage extends StatefulWidget {
 
 class ChatPageState extends State<ChatPage>
     with AutomaticKeepAliveClientMixin<ChatPage> {
-  List<Chat> _chatList = [];
-  bool _cancelConnect = false;
 
   /// 菜单
   PopupMenuItem _buildMenuItem(String imageName, String title) {
@@ -50,48 +43,19 @@ class ChatPageState extends State<ChatPage>
   void initState() {
     /// 组件初始化操作
     super.initState();
+    // WidgetsBinding.instance.addObserver(this);
 
-    /// 请求数据
-    getData()
-        .then((List<Chat>? value) {
-          if (!_cancelConnect) {
-            setState(() {
-              _chatList = value!;
-            });
-          }
-        })
-        .catchError((onError) {
-          debugPrint(onError);
-        })
-        .whenComplete(() {
-          debugPrint('完成');
-        })
-        .timeout(const Duration(milliseconds: 5000))
-        .catchError((timeoutError) {
-          _cancelConnect = true;
-          debugPrint('timeoutError...');
-        });
+  }
 
-    // final chat = {
-    //   'name' : '张三',
-    //   'message' : '吃了吗',
-    //   'imageUrl' : 'imageUrl',
-    // };
-    // // Map转JSON
-    // final jsonChat = json.encode(chat);
-    // print(jsonChat);
-    // // JSON转Map
-    // final mapChat = json.decode(jsonChat);
-    // print(mapChat);
-    // (mapChat is Map);
-
-    // final model = Chat.formJson(mapChat);
-    // print(model.name);
+  @override
+  void dispose() {
+    // WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    super.build(context);
+    super.build(context); // 如果不加这句，从子页面回来会重新加载didChangeDependencies()方法
     return Scaffold(
         appBar: AppBar(
           elevation: 0.0,
@@ -131,48 +95,63 @@ class ChatPageState extends State<ChatPage>
             ),
           ],
         ),
-        body: Container(
-            child: _chatList.isEmpty
-                ? const Center(
-                    child: Text('暂无消息'),
-                  )
-                : ListView.builder(
-                    itemCount: _chatList.length + 1,
-                    itemBuilder: _listViewItemBuilder,
-                  )));
+        body: _buildConversationListView()
+    );
   }
 
-  Widget _listViewItemBuilder(BuildContext context, int index) {
-    if (index == 0) {
-      // return SearchCell();
-      return SearchCell(datas: _chatList);
-    } else {
-      return ListTile(
-        title: Text(_chatList[index - 1].name),
-        subtitle: Text(
-          _chatList[index - 1].message,
-          overflow: TextOverflow.ellipsis,
+  ListView _buildConversationListView(){
+    // 构建会话列表
+    return ListView(
+      children: <Widget>[
+         ListTile(
+          onTap: (){
+            Navigator.of(context).push(
+                 MaterialPageRoute(
+                    builder: (context){
+                      // return new XKTabBar();
+                      return const Text('test');
+                    }
+                )
+            );
+          },
+          leading:  Image.network("https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg",width: 40.0,height: 40.0,fit: BoxFit.cover,),
+          title: const Text("刘德华"),
+          subtitle: const Text("今年的演唱会退票到账了吧？"),
+          trailing: const Text("9:00"),
         ),
-        leading: CircleAvatar(
-          backgroundImage: NetworkImage(_chatList[index - 1].imageUrl),
+         ListTile(
+          onTap: (){
+            Navigator.of(context).push(
+                 MaterialPageRoute(
+                    builder: (context){
+                      // return new XKTabBar();
+                      return const Text('test');
+                    }
+                )
+            );
+          },
+          leading:  Image.asset("assets/images/more.png",width: 40.0,height: 40.0,fit: BoxFit.cover,),
+          title:  const Text("LebronJames"),
+          subtitle:  const Text("We will take over this game"),
+          trailing:  const Text("8:45"),
         ),
-      );
-    }
-  }
-
-  Future<List<Chat>?> getData() async {
-    /// 异步请求消息内容
-    _cancelConnect = false;
-    var response = await http
-        .get(Uri.parse('http://rap2api.taobao.org/app/mock/data/2042105'));
-    if (response.statusCode == 200) {
-      final responseMap = json.decode(response.body);
-      List<Chat> chatList = responseMap['chat_list'].map<Chat>((item) {
-        return Chat.fromMap(item);
-      }).toList();
-      return chatList;
-    } else {
-      throw Exception('statusCode:${response.statusCode}');
-    }
+         ListTile(
+          onTap: (){
+            Navigator.of(context).push(
+                 MaterialPageRoute(
+                    builder: (context){
+                      // return new XKTabBar();
+                      return const Text('test');
+                    }
+                )
+            );
+          },
+          leading:  Image.asset("assets/images/more.png",width: 40.0,height: 40.0,fit: BoxFit.cover,),
+          title:  const Text("范冰冰"),
+          subtitle:  const Text("帮我带饭啊，钱放你桌子上了"),
+          trailing:  const Text("6:00")
+         )
+      ]
+    );
   }
 }
