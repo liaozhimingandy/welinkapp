@@ -42,6 +42,7 @@ class ChatPageState extends State<ChatPage>
     );
   }
 
+  // 只会执行一次initState()
   @override
   bool get wantKeepAlive => true;
 
@@ -60,15 +61,15 @@ class ChatPageState extends State<ChatPage>
           }
         })
         .catchError((onError) {
-          print(onError);
+          debugPrint(onError);
         })
         .whenComplete(() {
-          print('完成');
+          debugPrint('完成');
         })
         .timeout(const Duration(milliseconds: 5000))
         .catchError((timeoutError) {
           _cancelConnect = true;
-          print('timeoutError...');
+          debugPrint('timeoutError...');
         });
 
     // final chat = {
@@ -106,10 +107,10 @@ class ChatPageState extends State<ChatPage>
               child: PopupMenuButton(
                 color: const Color.fromRGBO(0, 0, 0, 0.5),
                 onSelected: (item) {
-                  print(item);
+                  debugPrint(item);
                 },
                 onCanceled: () {
-                  print('onCanceled');
+                  debugPrint('onCanceled');
                 },
                 offset: const Offset(0, 60),
                 child: const Image(
@@ -148,11 +149,9 @@ class ChatPageState extends State<ChatPage>
     } else {
       return ListTile(
         title: Text(_chatList[index - 1].name),
-        subtitle: Container(
-          child: Text(
-            _chatList[index - 1].message,
-            overflow: TextOverflow.ellipsis,
-          ),
+        subtitle: Text(
+          _chatList[index - 1].message,
+          overflow: TextOverflow.ellipsis,
         ),
         leading: CircleAvatar(
           backgroundImage: NetworkImage(_chatList[index - 1].imageUrl),

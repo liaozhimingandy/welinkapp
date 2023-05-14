@@ -22,12 +22,12 @@ class DiscoverPageState extends State<DiscoverPage>
         centerTitle: true,
         title: const Text(
           "发现",
-          style: TextStyle(color: Colors.black87),
+          style: TextStyle(color: Colors.white),
         ),
         elevation: 0.0,
       ),
       body: Container(
-        color: themeColor,
+        color: bgColor,
         height: 800,
         child: ListView(
           children: [

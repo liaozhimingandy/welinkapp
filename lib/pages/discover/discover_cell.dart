@@ -57,39 +57,35 @@ class DiscoverCellState extends State<DiscoverCell> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Container(
-              child: Row(
-                children: [
-                  Image(
-                    image: AssetImage(widget.imageName),
-                    width: 20,
-                  ),
-                  const SizedBox(
-                    width: 5,
-                  ),
-                  Text(widget.title),
-                ],
-              ),
+            Row(
+              children: [
+                Image(
+                  image: AssetImage(widget.imageName),
+                  width: 20,
+                ),
+                const SizedBox(
+                  width: 5,
+                ),
+                Text(widget.title),
+              ],
             ),
-            Container(
-              child: Row(
-                children: [
-                  Text(
-                    widget.subTitle == null ? '' : '${widget.subTitle}',
-                    style: const TextStyle(color: Colors.grey, fontSize: 13),
-                  ),
-                  widget.subImageName == null
-                      ? Container()
-                      : Image(
-                          image: AssetImage(widget.subImageName!),
-                          width: 15,
-                        ),
-                  const Image(
-                    image: AssetImage('images/icon_right.png'),
-                    width: 15,
-                  )
-                ],
-              ),
+            Row(
+              children: [
+                Text(
+                  widget.subTitle == null ? '' : '${widget.subTitle}',
+                  style: const TextStyle(color: Colors.grey, fontSize: 13),
+                ),
+                widget.subImageName == null
+                    ? Container()
+                    : Image(
+                        image: AssetImage(widget.subImageName!),
+                        width: 15,
+                      ),
+                const Image(
+                  image: AssetImage('images/icon_right.png'),
+                  width: 15,
+                )
+              ],
             ),
           ],
         ),

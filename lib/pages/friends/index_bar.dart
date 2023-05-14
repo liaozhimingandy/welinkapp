@@ -46,13 +46,11 @@ class IndexBarState extends State<IndexBar> {
     List<Widget> indexWidgets = [];
     for (int i = 0; i < _indexWords.length; i++) {
       indexWidgets.add(Expanded(
-        child: Container(
-          child: Text(_indexWords[i],
-              style: TextStyle(
-                fontSize: 10,
-                color: _textColor,
-              )),
-        ),
+        child: Text(_indexWords[i],
+            style: TextStyle(
+              fontSize: 10,
+              color: _textColor,
+            )),
       ));
     }
 

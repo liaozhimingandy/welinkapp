@@ -18,7 +18,7 @@ class SearchCell extends StatelessWidget {
       },
       child: Container(
         height: 44,
-        color: themeColor,
+        color: bgColor,
         padding: const EdgeInsets.all(5),
         child: Container(
           decoration: BoxDecoration(

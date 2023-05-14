@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:welinkapp/pages/components/UserIconWidget.dart';
 import 'package:welinkapp/pages/const.dart';
-import 'package:welinkapp/pages/discover/discover_cell.dart';
+
+import 'my_info_page.dart';
+import 'setting_page.dart';
 
 class MePage extends StatefulWidget {
   const MePage({Key? key}) : super(key: key);
@@ -12,6 +14,19 @@ class MePage extends StatefulWidget {
 
 class MePageState extends State<MePage>
     with AutomaticKeepAliveClientMixin<MePage> {
+
+  // 头像组件
+    Widget userImage =  UserIconWidget(
+        padding: const EdgeInsets.only(top: 28.0, right: 18.0, left: 25.0),
+        width: 55.0,
+        height: 55.0,
+        image: 'assets/images/default_nor_avatar.png',
+        isNetwork: false,
+        onPressed: () {
+          // NavigatorUtils.goPerson(context, eventViewModel.actionUser);
+        }
+        );
+
   Widget buildRow(icon, title, isEnd) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -24,6 +39,14 @@ class MePageState extends State<MePage>
             isNetwork: false,
             onPressed: () {
               // NavigatorUtils.goPerson(context, eventViewModel.actionUser);
+            Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (c) {
+                      return const SettingPage();
+                    },
+                  ),
+                );  
             }),
         Expanded(
           child: Container(
@@ -31,7 +54,7 @@ class MePageState extends State<MePage>
                 ? const BoxDecoration(
                     border: Border(
                         bottom:
-                            BorderSide(color: Color(0xffd9d9d9), width: .3)))
+                            BorderSide(color: Colors.white, width: .3)))
                 : null,
             padding: const EdgeInsets.only(top: 16.0),
             child: Row(
@@ -48,12 +71,12 @@ class MePageState extends State<MePage>
                   margin: const EdgeInsets.only(bottom: 15.0, right: 10.0),
                   child: const Icon(
                     Icons.chevron_right,
-                    color: Colors.grey,
+                    color: Colors.black,
                   ),
                 ),
               ],
             ),
-          ),
+            ),
         ),
       ],
     );
@@ -66,41 +89,84 @@ class MePageState extends State<MePage>
   Widget build(BuildContext context) {
     super.build(context);
 
-    return Stack(
+    return Scaffold(
+      backgroundColor: bgColor,
+      body: Stack(
       children: [
         ListView(
           children: [
             Container(
               height: 180.0,
               color: themeColor,
-              child: RawMaterialButton(onPressed: () {
+              child: RawMaterialButton(
+                onPressed: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
                     builder: (c) {
-                      return const DiscoverCell(
-                        title: 'test',
-                        imageName: '',
-                      );
+                      return const MyInfoPage();
                     },
                   ),
                 );
-              }),
+              },
+              child: 
+                Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      userImage,
+                      Expanded(
+                        child: 
+                          Container(
+                            padding: const EdgeInsets.only(top: 83.0),
+                            child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children:  [
+                              const Text(
+                                'leeo',
+                                style: TextStyle(fontSize: 22.5, fontWeight: FontWeight.bold),
+                              ),
+                              Container(
+                                height: 2.0,
+                              ),
+                              const Text(
+                                '19917192021',
+                                maxLines: 1,
+                                style: TextStyle(color: Colors.white, fontSize: 13.0),
+                              )
+                              ]
+                              )
+                            ),
+                      ),
+                      Container(
+                          padding: const EdgeInsets.only(top: 65.0, bottom: 15.0, right: 10.0),
+                          child: const Icon(
+                            Icons.chevron_right,
+                            color: Colors.white,
+                          ),
+                        )
+                      ],
+                      ),
+              ),
             ), // 头像部分
-
-            Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Container(
-                  color: bgColor,
-                  height: 20.0,
-                ),
+            const SizedBox(
+              height:8
+            ),
+            Container(
+              height: 54,
+              margin: const EdgeInsets.all(10), 
+              padding: const EdgeInsets.all(2),
+              // color: Colors.white,
+              decoration: const BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.circular(8)),
+                color: Colors.white
+              ),// 调整角度
+              child:
                 buildRow('assets/images/more.png', '设置', true),
-              ],
-            ) // 设置
+            ), // 设置
           ],
         )
       ],
-    );
+    )
+  );
   }
 }

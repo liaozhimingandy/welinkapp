@@ -18,6 +18,7 @@ class FriendsPageState extends State<FriendsPage>
     '🔍': 0.0,
   };
   final double _maxScrollExtent = double.maxFinite;
+
   @override
   bool get wantKeepAlive => true;
 
@@ -46,6 +47,7 @@ class FriendsPageState extends State<FriendsPage>
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Scaffold(
         appBar: AppBar(
             centerTitle: true,
@@ -70,7 +72,7 @@ class FriendsPageState extends State<FriendsPage>
             ],
             title: const Text("通讯录")),
         body: Container(
-            color: themeColor,
+            color: bgColor,
             child: Stack(children: [
               ListView.builder(
                   controller: _scrollController,
@@ -154,49 +156,46 @@ class _FriendCell extends StatelessWidget {
         children: [
           Container(
             height: groupTitle == null ? 0 : 30,
+            alignment: Alignment.centerLeft,
+            color: bgColor,
+            padding: const EdgeInsets.only(left: 10),
             child: groupTitle == null
                 ? null
                 : Text(
                     groupTitle!,
                     style: const TextStyle(fontSize: 20, color: Colors.grey),
                   ),
-            alignment: Alignment.centerLeft,
-            color: themeColor,
-            padding: const EdgeInsets.only(left: 10),
           ),
-          Container(
-            child: Row(
-              children: [
-                Container(
-                  margin: const EdgeInsets.all(10),
-                  width: 50,
-                  height: 50,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(6.0),
-                    image: DecorationImage(image: NetworkImage(imageUrl)),
-                  ), //头像
+          Row(
+            children: [
+              Container(
+                margin: const EdgeInsets.all(10),
+                width: 50,
+                height: 50,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(6.0),
+                  image: DecorationImage(image: NetworkImage(imageUrl)),
+                ), //头像
+              ),
+              Column(
+                children: [
+              Container(
+                height: 53.5,
+                width: screenWidth(context) - 100,
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  name,
+                  style: const TextStyle(fontSize: 18),
                 ),
-                Container(
-                    child: Column(
-                  children: [
-                    Container(
-                      child: Text(
-                        name,
-                        style: const TextStyle(fontSize: 18),
-                      ),
-                      height: 53.5,
-                      width: screenWidth(context) - 100,
-                      alignment: Alignment.centerLeft,
-                    ),
-                    Container(
-                      color: themeColor,
-                      width: screenWidth(context) - 100,
-                      height: .5,
-                    ),
-                  ],
-                )),
-              ],
-            ),
+              ),
+              Container(
+                color: bgColor,
+                width: screenWidth(context) - 100,
+                height: .5,
+              ),
+                ],
+              ),
+            ],
           ),
         ],
       ),
