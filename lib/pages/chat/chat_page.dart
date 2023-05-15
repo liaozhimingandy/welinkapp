@@ -9,7 +9,6 @@ class ChatPage extends StatefulWidget {
 
 class ChatPageState extends State<ChatPage>
     with AutomaticKeepAliveClientMixin<ChatPage> {
-
   /// 菜单
   PopupMenuItem _buildMenuItem(String imageName, String title) {
     return PopupMenuItem(
@@ -44,7 +43,6 @@ class ChatPageState extends State<ChatPage>
     /// 组件初始化操作
     super.initState();
     // WidgetsBinding.instance.addObserver(this);
-
   }
 
   @override
@@ -95,63 +93,38 @@ class ChatPageState extends State<ChatPage>
             ),
           ],
         ),
-        body: _buildConversationListView()
-    );
+        body: _buildConversationListView());
   }
 
-  ListView _buildConversationListView(){
+  ListView _buildConversationListView() {
+    final ScrollController scrollController = ScrollController();
     // 构建会话列表
-    return ListView(
-      children: <Widget>[
-         ListTile(
-          onTap: (){
-            Navigator.of(context).push(
-                 MaterialPageRoute(
-                    builder: (context){
-                      // return new XKTabBar();
-                      return const Text('test');
-                    }
-                )
-            );
-          },
-          leading:  Image.network("https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg",width: 40.0,height: 40.0,fit: BoxFit.cover,),
-          title: const Text("刘德华"),
-          subtitle: const Text("今年的演唱会退票到账了吧？"),
-          trailing: const Text("9:00"),
-        ),
-         ListTile(
-          onTap: (){
-            Navigator.of(context).push(
-                 MaterialPageRoute(
-                    builder: (context){
-                      // return new XKTabBar();
-                      return const Text('test');
-                    }
-                )
-            );
-          },
-          leading:  Image.asset("assets/images/more.png",width: 40.0,height: 40.0,fit: BoxFit.cover,),
-          title:  const Text("LebronJames"),
-          subtitle:  const Text("We will take over this game"),
-          trailing:  const Text("8:45"),
-        ),
-         ListTile(
-          onTap: (){
-            Navigator.of(context).push(
-                 MaterialPageRoute(
-                    builder: (context){
-                      // return new XKTabBar();
-                      return const Text('test');
-                    }
-                )
-            );
-          },
-          leading:  Image.asset("assets/images/more.png",width: 40.0,height: 40.0,fit: BoxFit.cover,),
-          title:  const Text("范冰冰"),
-          subtitle:  const Text("帮我带饭啊，钱放你桌子上了"),
-          trailing:  const Text("6:00")
-         )
-      ]
+    return ListView.builder(
+      controller: scrollController,
+      itemBuilder: buildConversationItem,
+      itemCount: 10,
     );
   }
+}
+
+Widget buildConversationItem(BuildContext context, int index) {
+  // 构建会话项
+
+  return ListTile(
+    onTap: () {
+      Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+        // return new XKTabBar();
+        return const Text('test');
+      }));
+    },
+    leading: Image.network(
+      "https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg",
+      width: 40.0,
+      height: 40.0,
+      fit: BoxFit.cover,
+    ),
+    title: const Text("刘德华"),
+    subtitle: const Text("今年的演唱会退票到账了吧？"),
+    trailing: const Text("9:00"),
+  );
 }
