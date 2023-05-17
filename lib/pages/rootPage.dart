@@ -46,7 +46,7 @@ class RootPageState extends State<RootPage> {
           BottomNavigationBarItem(icon: Icon(Icons.message), label: '信息'),
           BottomNavigationBarItem(icon: Icon(Icons.contacts), label: '通讯录'),
           BottomNavigationBarItem(icon: Icon(Icons.apps), label: '发现'),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: '我')
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: '我的')
         ],
         onTap: (value) => {
           /// 跳转到对应的导航页面

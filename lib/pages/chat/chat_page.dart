@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+// import 'package:welinkapp/pages/models/conversation.dart';
+
 class ChatPage extends StatefulWidget {
   const ChatPage({Key? key}) : super(key: key);
 
@@ -105,26 +107,25 @@ class ChatPageState extends State<ChatPage>
       itemCount: 10,
     );
   }
-}
 
-Widget buildConversationItem(BuildContext context, int index) {
-  // 构建会话项
-
-  return ListTile(
-    onTap: () {
-      Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-        // return new XKTabBar();
-        return const Text('test');
-      }));
-    },
-    leading: Image.network(
-      "https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg",
-      width: 40.0,
-      height: 40.0,
-      fit: BoxFit.cover,
-    ),
-    title: const Text("刘德华"),
-    subtitle: const Text("今年的演唱会退票到账了吧？"),
-    trailing: const Text("9:00"),
-  );
+  Widget buildConversationItem(BuildContext context, int index) {
+    // 构建会话项
+    return ListTile(
+      onTap: () {
+        Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+          // return new XKTabBar();
+          return const Text('test');
+        }));
+      },
+      leading: Image.network(
+        "https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg",
+        width: 40.0,
+        height: 40.0,
+        fit: BoxFit.cover,
+      ),
+      title: const Text("刘德华"),
+      subtitle: const Text("今年的演唱会退票到账了吧？"),
+      trailing: const Text("9:00"),
+    );
+  }
 }
