@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../const.dart';
+import 'package:welinkapp/const.dart';
 
 class IndexBar extends StatefulWidget {
   final void Function(String str) indexBarCallBack;

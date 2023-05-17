@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:welinkapp/pages/components/UserIconWidget.dart';
-import 'package:welinkapp/pages/const.dart';
+import 'package:welinkapp/components/UserIconWidget.dart';
+import 'package:welinkapp/const.dart';
 
 import 'my_info_page.dart';
 import 'setting_page.dart';

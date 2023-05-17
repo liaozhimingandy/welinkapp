@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:welinkapp/pages/chat/search_page.dart';
-import 'package:welinkapp/pages/const.dart';
+import 'package:welinkapp/const.dart';
 
 import 'chat.dart';
 

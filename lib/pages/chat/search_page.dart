@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:welinkapp/pages/const.dart';
+import 'package:welinkapp/const.dart';
 
 import 'chat.dart';
 

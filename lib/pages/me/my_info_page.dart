@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../components/UserIconWidget.dart';
+import 'package:welinkapp/components/UserIconWidget.dart';
 
 
 class MyInfoPage extends StatefulWidget {

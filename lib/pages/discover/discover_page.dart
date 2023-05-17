@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:welinkapp/pages/discover/discover_cell.dart';
-import 'package:welinkapp/pages/const.dart';
+import 'package:welinkapp/const.dart';
 
 class DiscoverPage extends StatefulWidget {
   const DiscoverPage({Key? key}) : super(key: key);

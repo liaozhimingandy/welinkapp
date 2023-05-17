@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
 
+import 'package:welinkapp/database/database.dart';
 import 'package:welinkapp/pages/rootPage.dart';
 
-void main() {
+Future<void> main() async{
+  WidgetsFlutterBinding.ensureInitialized;
+  final database = await $FloorAppDatabase
+      .databaseBuilder('flutter_database.db')
+      .build();
+
+  // final dao = database.taskDao;
   runApp(const MyApp());
 }
 

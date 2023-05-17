@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:welinkapp/pages/const.dart';
+import 'package:welinkapp/const.dart';
 import 'package:welinkapp/pages/friends/index_bar.dart';
 import 'friends_data.dart';
 
