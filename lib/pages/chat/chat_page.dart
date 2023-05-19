@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 
 // import 'package:welinkapp/pages/models/conversation.dart';
 
@@ -42,6 +43,11 @@ class ChatPageState extends State<ChatPage>
 
   @override
   void initState() {
+    GetIt locator = GetIt.instance;
+    //调用工厂对象
+    var mutouModel = locator.get();
+    debugPrint(mutouModel.toString());
+
     /// 组件初始化操作
     super.initState();
     // WidgetsBinding.instance.addObserver(this);
