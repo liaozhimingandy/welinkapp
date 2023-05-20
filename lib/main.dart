@@ -1,25 +1,36 @@
-import 'package:floor/floor.dart';
+
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 
+
 import 'package:welinkapp/database/database.dart';
 import 'package:welinkapp/pages/rootPage.dart';
+import 'package:welinkapp/config/config.dart';
 
-final GetIt getIt = GetIt.instance;
+import 'dart:ui';
+
 // 初始化
 Future<void> setUp({bool test = false}) async {
 //     getIt.registerSingleton<AppModel>(AppModelImplementation(),
 //       signalsReady: true);
-  getIt.registerSingleton(
-      () => $FloorAppDatabase.databaseBuilder('flutter_database.db').build());
+  GetIt.instance.registerSingleton<AppConfig>(AppConfig());
+  AppConfig appConfig = GetIt.instance<AppConfig>();
+  appConfig.enviroment = Enviroment.pro;
+  if (window.physicalSize.aspectRatio > 1) {
+    //说明是横屏或者大屏幕
+    appConfig.isBigScreen = true;
+  } else {
+    appConfig.isBigScreen = false;
+  }
+  // 数据库操作
+  final database = await $FloorAppDatabase.databaseBuilder('flutter_database.sqlite3').build();
+  final dao = database.conversationDao;
+  debugPrint(dao.findAllConversations().toString());
 }
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized;
-  // 初始化数据库
-
-  setUp();
-
+  setUp();  // 应用初始化数据库
   runApp(const MyApp());
 }
 
@@ -29,7 +40,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'App Demo',
       debugShowCheckedModeBanner: true,
 
       ///开启开发模式

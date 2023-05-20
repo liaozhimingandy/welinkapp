@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
+import 'package:welinkapp/config/config.dart';
+
+import 'chat_detail.dart';
 
 // import 'package:welinkapp/pages/models/conversation.dart';
 
@@ -43,10 +46,6 @@ class ChatPageState extends State<ChatPage>
 
   @override
   void initState() {
-    GetIt locator = GetIt.instance;
-    //调用工厂对象
-    var mutouModel = locator.get();
-    debugPrint(mutouModel.toString());
 
     /// 组件初始化操作
     super.initState();
@@ -105,22 +104,21 @@ class ChatPageState extends State<ChatPage>
   }
 
   ListView _buildConversationListView() {
-    final ScrollController scrollController = ScrollController();
     // 构建会话列表
-    return ListView.builder(
-      controller: scrollController,
+    return ListView.separated(
       itemBuilder: buildConversationItem,
+      separatorBuilder:(BuildContext context, int index) => const Divider(),
       itemCount: 10,
     );
   }
 
   Widget buildConversationItem(BuildContext context, int index) {
+    AppConfig appConfig = GetIt.instance.get<AppConfig>();
     // 构建会话项
     return ListTile(
       onTap: () {
-        Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-          // return new XKTabBar();
-          return const Text('test');
+        Navigator.push(context, MaterialPageRoute(builder: (context) {
+          return const ChatDetailPage(name: '张三');
         }));
       },
       leading: Image.network(
@@ -129,7 +127,7 @@ class ChatPageState extends State<ChatPage>
         height: 40.0,
         fit: BoxFit.cover,
       ),
-      title: const Text("刘德华"),
+      title: Text(appConfig.isBigScreen.toString()),
       subtitle: const Text("今年的演唱会退票到账了吧？"),
       trailing: const Text("9:00"),
     );

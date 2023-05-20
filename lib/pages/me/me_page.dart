@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:welinkapp/components/UserIconWidget.dart';
+import 'package:welinkapp/config/config.dart';
 import 'package:welinkapp/const.dart';
 
 import 'my_info_page.dart';
@@ -39,6 +41,9 @@ class MePageState extends State<MePage>
             isNetwork: false,
             onPressed: () {
               // NavigatorUtils.goPerson(context, eventViewModel.actionUser);
+            AppConfig appconfig = GetIt.instance.get<AppConfig>();
+            appconfig.isBigScreen = !appconfig.isBigScreen;
+            debugPrint(appconfig.isBigScreen.toString());
             Navigator.push(
                   context,
                   MaterialPageRoute(
