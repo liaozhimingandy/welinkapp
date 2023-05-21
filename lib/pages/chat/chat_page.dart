@@ -15,7 +15,7 @@ class ChatPage extends StatefulWidget {
 
 class ChatPageState extends State<ChatPage>
     with AutomaticKeepAliveClientMixin<ChatPage> {
-  /// 菜单
+  // 菜单
   PopupMenuItem _buildMenuItem(String imageName, String title) {
     return PopupMenuItem(
       value: {
@@ -47,7 +47,7 @@ class ChatPageState extends State<ChatPage>
   @override
   void initState() {
 
-    /// 组件初始化操作
+    // 组件初始化操作
     super.initState();
     // WidgetsBinding.instance.addObserver(this);
   }
