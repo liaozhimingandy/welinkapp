@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:welinkapp/config/config.dart';
 
+import '../../utils/data_persistence.dart';
 import 'chat_detail.dart';
 
 // import 'package:welinkapp/pages/models/conversation.dart';
@@ -46,7 +47,6 @@ class ChatPageState extends State<ChatPage>
 
   @override
   void initState() {
-
     // 组件初始化操作
     super.initState();
     // WidgetsBinding.instance.addObserver(this);
@@ -107,18 +107,17 @@ class ChatPageState extends State<ChatPage>
     // 构建会话列表
     return ListView.separated(
       itemBuilder: buildConversationItem,
-      separatorBuilder:(BuildContext context, int index) => const Divider(),
+      separatorBuilder: (BuildContext context, int index) => const Divider(),
       itemCount: 10,
     );
   }
 
   Widget buildConversationItem(BuildContext context, int index) {
-    AppConfig appConfig = GetIt.instance.get<AppConfig>();
     // 构建会话项
     return ListTile(
       onTap: () {
         Navigator.push(context, MaterialPageRoute(builder: (context) {
-          return const ChatDetailPage(name: '张三');
+          return ChatDetailPage(name: DataPersistence.getDeviceID());
         }));
       },
       leading: Image.network(
@@ -127,7 +126,7 @@ class ChatPageState extends State<ChatPage>
         height: 40.0,
         fit: BoxFit.cover,
       ),
-      title: Text(appConfig.isBigScreen.toString()),
+      title: Text(DataPersistence.getDeviceID()),
       subtitle: const Text("今年的演唱会退票到账了吧？"),
       trailing: const Text("9:00"),
     );
