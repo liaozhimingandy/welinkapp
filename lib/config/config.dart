@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sp_util/sp_util.dart';
 
+import '../core/im.dart';
+
 class AppConfig {
   //初始化全局信息
   static Future init(Function() runApp) async {
@@ -13,6 +15,7 @@ class AppConfig {
     cachePath = (await getApplicationDocumentsDirectory()).path;
     // sputil使用文档: https://pub.flutter-io.cn/packages/sp_util
     await SpUtil.getInstance();
+    IM.iMManager.initSDK();
     runApp();
   }
 
