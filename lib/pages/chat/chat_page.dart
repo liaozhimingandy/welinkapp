@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get_it/get_it.dart';
-import 'package:welinkapp/config/config.dart';
 
 import '../../utils/data_persistence.dart';
 import 'chat_detail.dart';
