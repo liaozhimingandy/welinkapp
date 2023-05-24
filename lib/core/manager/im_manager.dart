@@ -40,8 +40,8 @@ class IMManager {
     _addNativeCallback(_channel);
   }
 
-  void _addNativeCallback(MethodChannel _channel) {
-    _channel.setMethodCallHandler((call) {
+  void _addNativeCallback(MethodChannel channel) {
+    channel.setMethodCallHandler((call) {
       try {
         Logger.print('Flutter : $call');
         if (call.method == ListenerType.connectListener) {

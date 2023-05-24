@@ -94,7 +94,7 @@ class GroupInfo {
   }
 
   Map<String, dynamic> toJson() {
-    final data = Map<String, dynamic>();
+    final data = <String, dynamic>{};
     data['groupID'] = groupID;
     data['groupName'] = groupName;
     data['notification'] = notification;
@@ -200,7 +200,7 @@ class GroupMembersInfo {
   }
 
   Map<String, dynamic> toJson() {
-    final data = Map<String, dynamic>();
+    final data = <String, dynamic>{};
     data['groupID'] = groupID;
     data['userID'] = userID;
     data['roleLevel'] = roleLevel;
@@ -244,7 +244,7 @@ class GroupMemberRole {
   }
 
   Map<String, dynamic> toJson() {
-    final data = Map<String, dynamic>();
+    final data = <String, dynamic>{};
     data['userID'] = userID;
     data['roleLevel'] = roleLevel;
     return data;
@@ -380,7 +380,7 @@ class GroupApplicationInfo {
   }
 
   Map<String, dynamic> toJson() {
-    final data = Map<String, dynamic>();
+    final data = <String, dynamic>{};
     data['groupID'] = groupID;
     data['groupName'] = groupName;
     data['notification'] = notification;
@@ -421,7 +421,7 @@ class GroupInviteResult {
   }
 
   Map<String, dynamic> toJson() {
-    final data = Map<String, dynamic>();
+    final data = <String, dynamic>{};
     data['userID'] = userID;
     data['result'] = result;
     return data;

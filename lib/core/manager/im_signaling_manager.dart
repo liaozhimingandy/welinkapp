@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:welinkapp/core/flutter_im_sdk.dart';
 
 class SignalingManager {
-  MethodChannel _channel;
+  final MethodChannel _channel;
   late OnSignalingListener listener;
 
   SignalingManager(this._channel);

@@ -138,7 +138,7 @@ class UserInfo {
   }
 
   Map<String, dynamic> toJson() {
-    final data = Map<String, dynamic>();
+    final data = <String, dynamic>{};
     data['publicInfo'] = publicInfo?.toJson();
     data['friendInfo'] = friendInfo?.toJson();
     data['blackInfo'] = blackInfo?.toJson();
@@ -257,7 +257,7 @@ class PublicUserInfo {
   }
 
   Map<String, dynamic> toJson() {
-    final data = Map<String, dynamic>();
+    final data = <String, dynamic>{};
     data['userID'] = userID;
     data['nickname'] = nickname;
     data['faceURL'] = faceURL;
@@ -343,7 +343,7 @@ class FriendInfo {
   }
 
   Map<String, dynamic> toJson() {
-    final data = Map<String, dynamic>();
+    final data = <String, dynamic>{};
     // data['ownerUserID'] = this.ownerUserID;
     data['userID'] = userID;
     data['remark'] = remark;
@@ -418,7 +418,7 @@ class BlacklistInfo {
   }
 
   Map<String, dynamic> toJson() {
-    final data = Map<String, dynamic>();
+    final data = <String, dynamic>{};
     data['userID'] = userID;
     data['nickname'] = nickname;
     data['faceURL'] = faceURL;
@@ -447,7 +447,7 @@ class FriendshipInfo {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
     data['userID'] = userID;
     data['result'] = result;
     return data;
@@ -537,7 +537,7 @@ class FriendApplicationInfo {
   }
 
   Map<String, dynamic> toJson() {
-    final data = Map<String, dynamic>();
+    final data = <String, dynamic>{};
     data['fromUserID'] = fromUserID;
     data['fromNickname'] = fromNickname;
     data['fromFaceURL'] = fromFaceURL;

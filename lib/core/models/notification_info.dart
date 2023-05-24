@@ -70,7 +70,7 @@ class OANotification {
   }
 
   Map<String, dynamic> toJson() {
-    final data = Map<String, dynamic>();
+    final data = <String, dynamic>{};
     data['notificationName'] = notificationName;
     data['notificationFaceURL'] = notificationFaceURL;
     data['notificationType'] = notificationType;
@@ -132,7 +132,7 @@ class GroupNotification {
   }
 
   Map<String, dynamic> toJson() {
-    final data = Map<String, dynamic>();
+    final data = <String, dynamic>{};
     if (group != null) {
       data['group'] = group!.toJson();
     }
@@ -176,7 +176,7 @@ class InvitedJoinGroupNotification {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
     if (group != null) {
       data['group'] = group!.toJson();
     }
@@ -219,7 +219,7 @@ class KickedGroupMemeberNotification {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
     if (group != null) {
       data['group'] = group!.toJson();
     }
@@ -252,7 +252,7 @@ class QuitGroupNotification {
   }
 
   Map<String, dynamic> toJson() {
-    final data = Map<String, dynamic>();
+    final data = <String, dynamic>{};
     if (group != null) {
       data['group'] = group!.toJson();
     }
@@ -281,7 +281,7 @@ class EnterGroupNotification {
   }
 
   Map<String, dynamic> toJson() {
-    final data = Map<String, dynamic>();
+    final data = <String, dynamic>{};
     if (group != null) {
       data['group'] = group!.toJson();
     }
@@ -320,7 +320,7 @@ class GroupRightsTransferNoticication {
   }
 
   Map<String, dynamic> toJson() {
-    final data = Map<String, dynamic>();
+    final data = <String, dynamic>{};
     if (group != null) {
       data['group'] = group!.toJson();
     }
@@ -367,7 +367,7 @@ class MuteMemberNotification {
   }
 
   Map<String, dynamic> toJson() {
-    final data = Map<String, dynamic>();
+    final data = <String, dynamic>{};
     if (group != null) {
       data['group'] = group!.toJson();
     }
@@ -402,7 +402,7 @@ class BurnAfterReadingNotification {
   }
 
   Map<String, dynamic> toJson() {
-    final data = Map<String, dynamic>();
+    final data = <String, dynamic>{};
     data['recvID'] = recvID;
     data['sendID'] = sendID;
     data['isPrivate'] = isPrivate;
@@ -438,7 +438,7 @@ class GroupMemberInfoChangedNotification {
   }
 
   Map<String, dynamic> toJson() {
-    final data = Map<String, dynamic>();
+    final data = <String, dynamic>{};
     if (group != null) {
       data['group'] = group!.toJson();
     }

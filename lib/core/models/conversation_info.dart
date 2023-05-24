@@ -2,6 +2,8 @@ import 'dart:convert';
 
 import 'package:welinkapp/core/flutter_im_sdk.dart';
 
+import '../logger.dart';
+
 class ConversationInfo {
   /// 会话ID
   String conversationID;
@@ -96,7 +98,9 @@ class ConversationInfo {
       } else if (json['latestMsg'] is Map) {
         latestMsg = Message.fromJson(json['latestMsg']);
       }
-    } catch (e) {}
+    } catch (e) {
+      Logger.print('$e');
+    }
     latestMsgSendTime = json['latestMsgSendTime'];
     draftText = json['draftText'];
     draftTextTime = json['draftTextTime'];
@@ -110,7 +114,7 @@ class ConversationInfo {
   }
 
   Map<String, dynamic> toJson() {
-    final data = Map<String, dynamic>();
+    final data = <String, dynamic>{};
     data['conversationID'] = conversationID;
     data['conversationType'] = conversationType;
     data['userID'] = userID;

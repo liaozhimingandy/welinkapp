@@ -28,7 +28,7 @@ class SearchResult {
   }
 
   Map<String, dynamic> toJson() {
-    final data = Map<String, dynamic>();
+    final data = <String, dynamic>{};
     data['totalCount'] = totalCount;
     if (searchResultItems != null) {
       data['searchResultItems'] =
@@ -78,7 +78,7 @@ class SearchResultItems {
   }
 
   Map<String, dynamic> toJson() {
-    final data = Map<String, dynamic>();
+    final data = <String, dynamic>{};
     data['conversationID'] = conversationID;
     data['conversationType'] = conversationType;
     data['showName'] = showName;
@@ -108,7 +108,7 @@ class SearchParams {
   }
 
   Map<String, dynamic> toJson() {
-    final data = Map<String, dynamic>();
+    final data = <String, dynamic>{};
     data['conversationID'] = conversationID;
     data['clientMsgIDList'] = clientMsgIDList;
     return data;

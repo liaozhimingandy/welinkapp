@@ -1,7 +1,5 @@
 // 会话相关
-import 'package:floor/floor.dart';
 
-@entity
 class Conversation {
   // 会话模型
   Conversation(
@@ -19,7 +17,6 @@ class Conversation {
       }
     );
 
-  @PrimaryKey(autoGenerate: true)
   final int? conversationID; //会话ID
   final String avatar; // 用户头像
   final String title; // 昵称

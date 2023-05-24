@@ -65,7 +65,7 @@ class DeptInfo {
   }
 
   Map<String, dynamic> toJson() {
-    final data = Map<String, dynamic>();
+    final data = <String, dynamic>{};
     data['departmentID'] = departmentID;
     data['faceURL'] = faceURL;
     data['name'] = name;
@@ -214,7 +214,7 @@ class DeptMemberInfo {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
     data['userID'] = userID;
     data['nickname'] = nickname;
     data['englishName'] = englishName;
@@ -271,7 +271,7 @@ class UserInDept {
   }
 
   Map<String, dynamic> toJson() {
-    final data = Map<String, dynamic>();
+    final data = <String, dynamic>{};
     if (department != null) {
       data['department'] = department!.toJson();
     }
@@ -321,7 +321,7 @@ class DeptMemberAndSubDept {
   }
 
   Map<String, dynamic> toJson() {
-    final data = Map<String, dynamic>();
+    final data = <String, dynamic>{};
     if (departmentList != null) {
       data['departmentList'] =
           departmentList!.map((v) => v.toJson()).toList();
@@ -367,7 +367,7 @@ class OrganizationSearchResult {
   }
 
   Map<String, dynamic> toJson() {
-    final data = Map<String, dynamic>();
+    final data = <String, dynamic>{};
     if (departmentList != null) {
       data['departmentList'] =
           departmentList!.map((v) => v.toJson()).toList();

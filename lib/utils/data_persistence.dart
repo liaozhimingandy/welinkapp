@@ -1,3 +1,5 @@
+// ignore_for_file: constant_identifier_names
+
 import 'package:sp_util/sp_util.dart';
 import 'package:uuid/uuid.dart';
 

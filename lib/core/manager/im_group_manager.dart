@@ -149,7 +149,7 @@ class GroupManager {
   }) =>
       getJoinedGroupList(
         operationID: Utils.checkOperationID(operationID),
-      ).then((list) => list.where((e) => e.groupID == gid).length > 0);
+      ).then((list) => list.where((e) => e.groupID == gid).isNotEmpty);
 
   /// 创建一个组
   /// [groupName] 群名

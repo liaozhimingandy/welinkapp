@@ -211,7 +211,7 @@ class Message {
   }
 
   Map<String, dynamic> toJson() {
-    final data = Map<String, dynamic>();
+    final data = <String, dynamic>{};
     data['clientMsgID'] = clientMsgID;
     data['serverMsgID'] = serverMsgID;
     data['createTime'] = createTime;
@@ -341,7 +341,7 @@ class PictureElem {
   }
 
   Map<String, dynamic> toJson() {
-    final data = Map<String, dynamic>();
+    final data = <String, dynamic>{};
     data['sourcePath'] = sourcePath;
     if (sourcePicture != null) {
       data['sourcePicture'] = sourcePicture?.toJson();
@@ -389,7 +389,7 @@ class PictureInfo {
   }
 
   Map<String, dynamic> toJson() {
-    final data = Map<String, dynamic>();
+    final data = <String, dynamic>{};
     data['uuid'] = uuid;
     data['type'] = type;
     data['size'] = size;
@@ -433,7 +433,7 @@ class SoundElem {
   }
 
   Map<String, dynamic> toJson() {
-    final data = Map<String, dynamic>();
+    final data = <String, dynamic>{};
     data['uuid'] = uuid;
     data['soundPath'] = soundPath;
     data['sourceUrl'] = sourceUrl;
@@ -511,7 +511,7 @@ class VideoElem {
   }
 
   Map<String, dynamic> toJson() {
-    final data = Map<String, dynamic>();
+    final data = <String, dynamic>{};
     data['videoPath'] = videoPath;
     data['videoUUID'] = videoUUID;
     data['videoUrl'] = videoUrl;
@@ -557,7 +557,7 @@ class FileElem {
   }
 
   Map<String, dynamic> toJson() {
-    final data = Map<String, dynamic>();
+    final data = <String, dynamic>{};
     data['filePath'] = filePath;
     data['uuid'] = uuid;
     data['sourceUrl'] = sourceUrl;
@@ -609,7 +609,7 @@ class AtElem {
   }
 
   Map<String, dynamic> toJson() {
-    final data = Map<String, dynamic>();
+    final data = <String, dynamic>{};
     data['text'] = text;
     data['atUserList'] = atUserList;
     data['isAtSelf'] = isAtSelf;
@@ -648,7 +648,7 @@ class LocationElem {
   }
 
   Map<String, dynamic> toJson() {
-    final data = Map<String, dynamic>();
+    final data = <String, dynamic>{};
     data['description'] = description;
     data['longitude'] = longitude;
     data['latitude'] = latitude;
@@ -676,7 +676,7 @@ class CustomElem {
   }
 
   Map<String, dynamic> toJson() {
-    final data = Map<String, dynamic>();
+    final data = <String, dynamic>{};
     data['data'] = data;
     data['extension'] = extension;
     data['description'] = description;
@@ -702,7 +702,7 @@ class QuoteElem {
   }
 
   Map<String, dynamic> toJson() {
-    final data = Map<String, dynamic>();
+    final data = <String, dynamic>{};
     data['text'] = text;
     data['quoteMessage'] = quoteMessage?.toJson();
     return data;
@@ -735,7 +735,7 @@ class MergeElem {
   }
 
   Map<String, dynamic> toJson() {
-    final data = Map<String, dynamic>();
+    final data = <String, dynamic>{};
     data['title'] = title;
     data['abstractList'] = abstractList;
     data['multiMessage'] = multiMessage?.map((e) => e.toJson()).toList();
@@ -759,7 +759,7 @@ class NotificationElem {
   }
 
   Map<String, dynamic> toJson() {
-    final data = Map<String, dynamic>();
+    final data = <String, dynamic>{};
     data['detail'] = detail;
     data['defaultTips'] = defaultTips;
     return data;
@@ -782,7 +782,7 @@ class FaceElem {
   }
 
   Map<String, dynamic> toJson() {
-    final data = Map<String, dynamic>();
+    final data = <String, dynamic>{};
     data['index'] = index;
     data['data'] = data;
     return data;
@@ -826,7 +826,7 @@ class AttachedInfoElem {
   }
 
   Map<String, dynamic> toJson() {
-    final data = Map<String, dynamic>();
+    final data = <String, dynamic>{};
     data['groupHasReadInfo'] = groupHasReadInfo?.toJson();
     data['isPrivateChat'] = isPrivateChat;
     data['hasReadTime'] = hasReadTime;
@@ -858,7 +858,7 @@ class GroupHasReadInfo {
   }
 
   Map<String, dynamic> toJson() {
-    final data = Map<String, dynamic>();
+    final data = <String, dynamic>{};
     data['hasReadUserIDList'] = hasReadUserIDList;
     data['hasReadCount'] = hasReadCount;
     data['groupMemberCount'] = groupMemberCount;
@@ -911,7 +911,7 @@ class ReadReceiptInfo {
   }
 
   Map<String, dynamic> toJson() {
-    final data = Map<String, dynamic>();
+    final data = <String, dynamic>{};
     data['userID'] = userID;
     data['msgIDList'] = msgIDList;
     data['readTime'] = readTime;
@@ -951,7 +951,7 @@ class OfflinePushInfo {
   }
 
   Map<String, dynamic> toJson() {
-    final data = Map<String, dynamic>();
+    final data = <String, dynamic>{};
     data['title'] = title;
     data['desc'] = desc;
     data['ex'] = ex;
@@ -977,7 +977,7 @@ class AtUserInfo {
   }
 
   Map<String, dynamic> toJson() {
-    final data = Map<String, dynamic>();
+    final data = <String, dynamic>{};
     data['atUserID'] = atUserID;
     data['groupNickname'] = groupNickname;
     return data;
@@ -1038,7 +1038,7 @@ class RevokedInfo {
   }
 
   Map<String, dynamic> toJson() {
-    final data = Map<String, dynamic>();
+    final data = <String, dynamic>{};
     data['revokerID'] = revokerID;
     data['revokerRole'] = revokerRole;
     data['revokerNickname'] = revokerNickname;
@@ -1080,7 +1080,7 @@ class AdvancedMessage {
   }
 
   Map<String, dynamic> toJson() {
-    final data = Map<String, dynamic>();
+    final data = <String, dynamic>{};
     data['messageList'] = messageList?.map((e) => e.toJson()).toList();
     data['isEnd'] = isEnd;
     data['errCode'] = errCode;
@@ -1114,7 +1114,7 @@ class RichMessageInfo {
   }
 
   Map<String, dynamic> toJson() {
-    final data = Map<String, dynamic>();
+    final data = <String, dynamic>{};
     data['type'] = type;
     data['offset'] = offset;
     data['length'] = length;
@@ -1141,7 +1141,7 @@ class KeyValue {
   }
 
   Map<String, dynamic> toJson() {
-    final data = Map<String, dynamic>();
+    final data = <String, dynamic>{};
     data['typeKey'] = typeKey;
     data['value'] = value;
     data['latestUpdateTime'] = latestUpdateTime;
@@ -1161,7 +1161,7 @@ class UserExInfo {
   }
 
   Map<String, dynamic> toJson() {
-    final data = Map<String, dynamic>();
+    final data = <String, dynamic>{};
     data['userID'] = userID;
     data['ex'] = ex;
     return data;
@@ -1193,7 +1193,7 @@ class SingleTypeKeyInfoSum {
   }
 
   Map<String, dynamic> toJson() {
-    final data = Map<String, dynamic>();
+    final data = <String, dynamic>{};
     data['typeKey'] = typeKey;
     data['counter'] = counter;
     data['infoList'] = infoList?.map((e) => e.toJson()).toList();
@@ -1218,7 +1218,7 @@ class MessageKv {
   }
 
   Map<String, dynamic> toJson() {
-    final data = Map<String, dynamic>();
+    final data = <String, dynamic>{};
     data['clientMsgID'] = clientMsgID;
     data['changedKvList'] = changedKvList?.map((e) => e.toJson()).toList();
     return data;
@@ -1248,7 +1248,7 @@ class TypeKeySetResult {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
     data['errCode'] = errCode;
     data['errMsg'] = errMsg;
     data['typeKey'] = typeKey;
@@ -1281,7 +1281,7 @@ class MessageTypeKeyMapping {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
     data['errCode'] = errCode;
     data['errMsg'] = errMsg;
     if (reactionExtensionList != null) {

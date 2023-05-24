@@ -1,7 +1,5 @@
 // 消息模型
-import 'package:floor/floor.dart';
 
-@entity
 class Message {
   Message(
       {this.clientMsgID,

@@ -29,7 +29,7 @@ class SignalingInfo {
   }
 
   Map<String, dynamic> toJson() {
-    final data = Map<String, dynamic>();
+    final data = <String, dynamic>{};
     data['opUserID'] = opUserID;
     data['invitation'] = invitation?.toJson();
     data['offlinePushInfo'] = offlinePushInfo?.toJson();
@@ -89,7 +89,7 @@ class InvitationInfo {
   }
 
   Map<String, dynamic> toJson() {
-    final data = Map<String, dynamic>();
+    final data = <String, dynamic>{};
     data['inviterUserID'] = inviterUserID;
     data['inviteeUserIDList'] = inviteeUserIDList;
     data['groupID'] = groupID;
@@ -128,12 +128,11 @@ class SignalingCertificate {
     token = json['token'];
     roomID = json['roomID'];
     liveURL = json['liveURL'];
-    busyLineUserIDList = null == json['busyLineUserIDList']
-        ? null : json['busyLineUserIDList'].cast<String>();
+    busyLineUserIDList = json['busyLineUserIDList']? json['busyLineUserIDList'].cast<String>():null;
   }
 
   Map<String, dynamic> toJson() {
-    final data = Map<String, dynamic>();
+    final data = <String, dynamic>{};
     data['token'] = token;
     data['roomID'] = roomID;
     data['liveURL'] = liveURL;
@@ -176,7 +175,7 @@ class RoomCallingInfo {
   }
 
   Map<String, dynamic> toJson() {
-    final data = Map<String, dynamic>();
+    final data = <String, dynamic>{};
     if (invitation != null) {
       data['invitation'] = invitation!.toJson();
     }
@@ -210,7 +209,7 @@ class Participant {
   }
 
   Map<String, dynamic> toJson() {
-    final data = Map<String, dynamic>();
+    final data = <String, dynamic>{};
     if (groupInfo != null) {
       data['groupInfo'] = groupInfo!.toJson();
     }
@@ -236,7 +235,7 @@ class CustomSignaling {
   }
 
   Map<String, dynamic> toJson() {
-    final data = Map<String, dynamic>();
+    final data = <String, dynamic>{};
     data['roomID'] = roomID;
     data['customInfo'] = customInfo;
     return data;
